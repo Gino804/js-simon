@@ -3,15 +3,31 @@ body
     font-family:sans-serif;
 }
 
+p
+{
+    text-align:center;
+}
+
+h1
+{
+    text-align:center;
+    margin-top:45vh;
+    font-size:50px;
+}
+
+input
+{
+    margin:auto;
+}
+
 #numbers
 {
     font-size:50px;
 }
 
-p
+#guesses
 {
     text-align:center;
-    margin-top:50vh;
 }
 
 .d-none

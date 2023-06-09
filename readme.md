@@ -19,11 +19,14 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 - Inserisco in pagina 5 numeri casuali diversi tra loro
 - Creo una variabile per i secondi e la inizializzo a 30
 - **OGNI** secondo
-  - Stampo in console il secondo corrente
+  - Stampo in pagina il secondo prima di quello corrente
   - Decremento i secondi di 1
   - **SE** i secondi sono arrivati a 0
     - Fermo il timer
 - **DOPO** 30 secondi
   - Faccio scomparire i numeri dalla pagina
-  - Chiedo all'utente di inserire i numeri che ha visto
-  - Comunico all'utente quanti e quali numeri ha indovinato
+  - Faccio comparire le caselle di input
+  - **QUANDO** l'utente clicca sul bottone
+    - Recupero tutti gli input dal DOM
+    - Controllo se l'utente ha indovinato dei numeri
+    - Comunico all'utente quanti e quali numeri ha indovinato

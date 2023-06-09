@@ -5,6 +5,15 @@ console.log('JS OK');
 const numbersPlaceholder = document.getElementById('numbers');
 console.log(numbersPlaceholder);
 
+const timerPlaceholder = document.getElementById('timer');
+console.log(timerPlaceholder);
+
+const guessesElement = document.getElementById('guesses');
+console.log(guessesElement);
+
+const guessButton = document.getElementById('guess-button');
+console.log(guessButton);
+
 // Inserisco in pagina 5 numeri casuali
 
 const numbers = [];
@@ -28,13 +37,11 @@ for(let i = 0; i < 5; i++)
 
 // Creo il timer
 let seconds = 30;
+timerPlaceholder.innerText = seconds;
 const timer = setInterval(function(){
 
-    // Stampo in console il secondo corrente
-    console.log(seconds);
-
-    // Decremento i secondi
-    seconds--;
+    // Stampo in pagina il secondo prima di quello corrente
+    timerPlaceholder.innerText = --seconds;
 
     // Se i secondi sono arrivati a 0, fermo il timer
     if(seconds === 0) clearInterval(timer);
@@ -46,16 +53,24 @@ setTimeout(function(){
     // Faccio scomparire i numeri dalla pagina
     numbersPlaceholder.classList.add('d-none');
 
-    // Postpongo di 1 millisecondo i prompt e l'alert altrimenti vengono eseguiti prima della scomparsa dei numeri
-    setTimeout(function(){
-        // Chiedo all'utente di inserire i numeri che ha visto
-        const rightNumbers = [];
-        for(let i = 0; i < 5; i++)
+    // Faccio comparire le caselle di input
+    guessesElement.classList.remove('d-none');
+
+    // Al click del bottone
+    const rightNumbers = [];
+    guessButton.addEventListener('click', function()
+    {
+        // Recupero tutti gli input dal DOM
+        const guesses = document.querySelectorAll('#guesses>input');
+
+        // Per ogni risposta
+        for(let i = 0; i < guesses.length; i++)
         {
-            const userGuess = parseInt(prompt('Inserisci un numero tra 1 e 99'));
-            if(numbers.includes(userGuess)) rightNumbers.push(userGuess);
+            let guess = parseInt(guesses[i].value);
+            // Se la risposta è tra i numeri estratti, è giusta
+            if(numbers.includes(guess)) rightNumbers.push(guess);
         }
-    
+
         // Comunico all'utente quanti e quali numeri ha indovinato
         let message = 'Non hai indovinato nessun numero';
         if(rightNumbers.length > 0)
@@ -71,5 +86,5 @@ setTimeout(function(){
             }
         }
         alert(message);
-    }, 1)
+    })
 }, 30000)

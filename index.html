@@ -7,10 +7,20 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <h1 id="timer"></h1>
     <p>
       MEMORIZZA QUESTI NUMERI <br />
       <span id="numbers"></span>
     </p>
+    <div id="guesses" class="d-none">
+      <p>Inserisci i numeri che hai visto:</p>
+      <input type="number" min="1" max="99" />
+      <input type="number" min="1" max="99" />
+      <input type="number" min="1" max="99" />
+      <input type="number" min="1" max="99" />
+      <input type="number" min="1" max="99" />
+      <button id="guess-button">Invia</button>
+    </div>
     <script src="js/script.js"></script>
   </body>
 </html>
